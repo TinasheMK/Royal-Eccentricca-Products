@@ -4,7 +4,7 @@
 .firebase
 firebase.json
 .firebaserc
-/dist
+# /dist
 /tmp
 /out-tsc
 # Only exists if Bazel was run
