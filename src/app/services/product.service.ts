@@ -90,6 +90,13 @@ export class ProductService {
   getFullProduct(productUrl: string) {
     return this.httpClient.get<ProductDetail>(`${this.publicUrl}/${productUrl}`);
   }
+  getFullProduct1(id): Observable<any> {
+    var data = {
+      "productId":id,
+      "IncludeClearanceItems": true
+  };
+    return this.httpClient.post(this.publicUrl + '/Catalogue/getProductDetail', data, this.options);
+  }
 
   getRelatedProducts(productUrl: string) {
     return this.httpClient.get<Array<Product>>(`${this.publicUrl}/related/${productUrl}`);

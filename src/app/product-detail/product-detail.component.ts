@@ -754,6 +754,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       "Brand": null,
       "OrderQuantity": null
   };
+
+
     this.routerSubscription = this.router.events.subscribe(event => {
       // Scroll to top if accessing a page, not via browser history stack
       if (event instanceof NavigationEnd && !this.isPopState) {
@@ -773,7 +775,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         this.productUrl = params.productUrl;
 
         this.innerLoading = true;
-        this.productService.getFullProduct(this.productUrl)
+        this.productService.getFullProduct1(this.productUrl)
           .pipe(take(1), catchError(
             error => {
               this.fetchError = error;
@@ -782,13 +784,14 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
             }
           ))
           .subscribe(
-            (data: ProductDetail) => {
-              this.product = data;
-              this.variant = params.variant ? params.variant : this.product.productVariantDetails[0].id;
-              this.activeProductVariant = data.productVariantDetails.find(p => p.id === Number(this.variant));
-              if (!this.activeProductVariant) {
-                this.activeProductVariant = data.productVariantDetails[0];
-              }
+            (data) => {
+              this.product1 = data.Body;
+              // this.variant = params.variant ? params.variant : this.product.productVariantDetails[0].id;
+              // this.activeProductVariant = data.productVariantDetails.find(p => p.id === Number(this.variant));
+              // if (!this.activeProductVariant) {
+              //   this.activeProductVariant = data.productVariantDetails[0];
+              // }
+              console.log(this.product1);
               this.innerLoading = false;
             }
           );

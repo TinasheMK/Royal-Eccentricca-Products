@@ -6,15 +6,15 @@
   <div *ngIf="innerLoading" style="min-height: 50vh"></div>
   <div *ngIf="product1 != null && innerLoading == false" class="row pt-5">
     <div class="col-md-7">
-      <img class="product-img img-responsive" src="{{ product1.ImageUrl2x }}" alt="{{ product1.ProductName }}">
+      <img class="product-img img-responsive" src="{{ product1.Images[0].ImageUrl3x }}" alt="{{ product1.ProductName }}">
     </div>
     <div class="col-md-4 mr-auto">
 
       <div class="product-description">
         <span class="category">{{ product1.ProductName }}</span>
         <h1 class="name">{{ product1.ProductName}}</h1>
-         {{ product1.ProductDescription }}
 
+        <div [innerHtml]="product1.ProductDescription"></div>
 
         <div class="row">
           <div class="amount col-md-6">
@@ -23,7 +23,7 @@
           </div>
 
           <div class="price col-md-6">
-            <span>{{ activeProductVariant.price }} €</span>
+            <span>{{ product1.ProductCode }}</span>
           </div>
         </div>
 
@@ -41,17 +41,17 @@
           </div>
           <div class="add col-md-12">
             <div *ngIf="(cartState | async).loading" class="loader" style="top:0; left: 25%"></div>
-            <button *ngIf="activeProductVariant.stock > 0" (click)="addToCart(amount)"
+            <!-- <button *ngIf="activeProductVariant.stock > 0" (click)="addToCart(amount)"
               [disabled]="(cartState | async).loading"
               [style.display]="(cartState | async).loading ? 'none' : 'inline-block'" class="btn btn-info">Add to cart
-            </button>
-            <button *ngIf="activeProductVariant.stock === 0" [disabled]="(cartState | async).loading"
+            </button> -->
+            <!-- <button *ngIf="activeProductVariant.stock === 0" [disabled]="(cartState | async).loading"
               [style.display]="(cartState | async).loading ? 'none' : 'inline-block'" class="btn out-stock">Out Of Stock
-            </button>
+            </button> -->
           </div>
         </div>
 
-
+<!--
         <div class="row">
           <div class="variant-title col-md-4 {{activeTab === 0 ? 'active': ''}}" (click)="setActiveTab(0)">
             <p>Variants</p>
@@ -62,15 +62,15 @@
           <div class="delivery-title col-md-4 {{activeTab === 2 ? 'active': ''}}" (click)="setActiveTab(2)">
             <p>Delivery</p>
           </div>
-        </div>
+        </div> -->
 
         <div class="row">
-          <div class="variant-info col-md-12" *ngIf="activeTab === 0">
-            <div *ngFor="let v of product.ProductDescription"
+          <!-- <div class="variant-info col-md-12" *ngIf="activeTab === 0">
+            <div *ngFor="let v of product1.ProductDescription"
               class="col-md-4 {{v.id === activeProductVariant.id ? 'active' : ''}}" (click)="setActiveVariant(v.id)">
               <img src="{{v.thumb}}" alt="{{v.color.name}}">
             </div>
-          </div>
+          </div> -->
           <div class="product-detail-info col-md-12" *ngIf="activeTab === 1">
             <div>
               <p>COLOR:</p>

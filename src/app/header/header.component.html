@@ -2,16 +2,16 @@
 
   <nav class="navbar navbar-expand-lg navbar-light">
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed"
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed"
       data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
       aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> -->
 
     <div class="pages navbar-nav">
 
       <div class="products">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
+        <div class="" id="">
           <a class="nav-link" routerLinkActive="active" routerLink="/browse"
             [routerLinkActiveOptions]="{exact: true}">Products</a>
         </div>
@@ -20,14 +20,14 @@
     </div>
 
 
-    <div class="search navbar-nav">
+    <!-- <div class="search navbar-nav">
       <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
         <div class="form-inline search">
           <input #search class="form-control" type="search" placeholder="Search" (keyup.enter)="searchProduct(search)"
             aria-label="Search">
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="end navbar-nav">
 
@@ -143,10 +143,5 @@
 
   </nav>
 
-  <div *ngIf="(authState | async).authenticated && (authState | async).isActive == false"
-    class="user-warning alert-warning">
-    <hr class="p-0 m-0">
-    Welcome to Keyist! Your account is inactive. Please check your email and activate!
-    <hr class="p-0 m-0">
-  </div>
+
 </div>
