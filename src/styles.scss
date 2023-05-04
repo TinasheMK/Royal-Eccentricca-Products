@@ -51,6 +51,19 @@ body,
 .loader:after {
   left: 1.5em;
 }
+
+.carousel-control-next {
+  right: 0;
+  background-color: #a3a1a1;
+}
+.carousel-control-prev {
+  right: 0;
+  background-color: #a3a1a1;
+}
+
+a {
+  color: #99702a !important;
+}
 @-webkit-keyframes load1 {
   0%,
   80%,

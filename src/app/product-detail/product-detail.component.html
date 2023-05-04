@@ -9,12 +9,22 @@
       <div class="carausel">
         <ngb-carousel *ngIf="product1.Images[0].ImageUrl3x">
           <ng-template ngbSlide *ngFor="let c of product1.Images">
-            <img [src]="c.ImageUrl3x" alt="{{c.ProductName}}">
+            <img [src]="c.ImageUrl3x" alt="{{c.ProductName}}" class="w-100">
             <div class="carousel-caption">
               <p>{{c.ProductName}}</p>
             </div>
           </ng-template>
         </ngb-carousel>
+
+        <!-- <ngb-carousel *ngIf="product1.Images[0].ImageUrl3x">
+          <ng-template ngbSlide>
+            <img [src]=" product1.Images[0].ImageUrl3x" alt="{{ product1.Images[0].ProductName}}" class="w-100">
+            <div class="carousel-caption">
+              <p>{{c.ProductName}}</p>
+            </div>
+          </ng-template>
+        </ngb-carousel> -->
+
       </div>
       <!-- <img class="product-img img-responsive" src="{{ product1.Images[0].ImageUrl3x }}" alt="{{ product1.ProductName }}">
       <img class="product-img img-responsive" src="{{ product1.Images[0].ImageUrl3x }}" alt="{{ product1.ProductName }}"> -->
@@ -27,16 +37,11 @@
 
         <div [innerHtml]="product1.ProductDescription"></div>
 
-        <div class="row">
-          <div class="amount col-md-6">
-            <div class="row"><span>AMOUNT</span></div>
-            <div class="row"><input #amount type="number" placeholder="-" min="1" value="1"></div>
-          </div>
 
-          <div class="price col-md-6">
-            <span>{{ product1.ProductCode }}</span>
+
+          <div class="price">
+            <span>Product Code: {{ product1.ProductCode }}</span>
           </div>
-        </div>
 
         <div class="row">
           <div class="col-md-12" *ngFor="let e of (cartState | async).errors">

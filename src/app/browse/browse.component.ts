@@ -12336,11 +12336,14 @@ export class BrowseComponent implements OnInit, OnDestroy {
 
     this.paramSubscription = this.route.params.subscribe(
       (params: Params) => {
-        this.selectedCategory = params.category;
 
-        this.loadProducts(this.selectedCategory);
-        console.log("Category selected:");
-        console.log(this.selectedCategory);
+
+        if(params.category){
+          this.selectedCategory = params.category;
+          this.loadProducts(this.selectedCategory);
+          console.log("Category selected:");
+          console.log(this.selectedCategory);
+        }
       }
     );
 
