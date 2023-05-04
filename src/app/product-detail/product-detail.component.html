@@ -6,7 +6,18 @@
   <div *ngIf="innerLoading" style="min-height: 50vh"></div>
   <div *ngIf="product1 != null && innerLoading == false" class="row pt-5">
     <div class="col-md-7">
-      <img class="product-img img-responsive" src="{{ product1.Images[0].ImageUrl3x }}" alt="{{ product1.ProductName }}">
+      <div class="carausel">
+        <ngb-carousel *ngIf="product1.Images[0].ImageUrl3x">
+          <ng-template ngbSlide *ngFor="let c of product1.Images">
+            <img [src]="c.ImageUrl3x" alt="{{c.ProductName}}">
+            <div class="carousel-caption">
+              <p>{{c.ProductName}}</p>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+      <!-- <img class="product-img img-responsive" src="{{ product1.Images[0].ImageUrl3x }}" alt="{{ product1.ProductName }}">
+      <img class="product-img img-responsive" src="{{ product1.Images[0].ImageUrl3x }}" alt="{{ product1.ProductName }}"> -->
     </div>
     <div class="col-md-4 mr-auto">
 

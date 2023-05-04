@@ -8,6 +8,8 @@ import * as BrowseActions from '../store/browse/browse.actions';
 import { Observable, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ProductService } from '../services/product.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { LocationStrategy } from '@angular/common';
 
 
 @Component({
@@ -33,6 +35,8 @@ export class BrowseComponent implements OnInit, OnDestroy {
     }
   ];
 
+  paramSubscription: Subscription;
+
   browseOptionsForm: FormGroup;
 
   browseState: Observable<BrowseState>;
@@ -49,7 +53,10 @@ export class BrowseComponent implements OnInit, OnDestroy {
   products: { ProductId: number; ProductCode: string; ProductName: string; Behavior: number; Promotion: number; PromotionStyle: string; BrandingRibbonStyle: any; BrandingRibbonImage: string; Price: number; PriceWithCurrency: number; Sizes: { SizeCode: string; Price: number; PriceWithCurrency: number; InStock: number; }[]; ImageUrl: string; ImageUrl2x: string; ImageUrl3x: string; ImageUrlXL: string; IsEssential: boolean; IsWorkwear: boolean; WorkwearInfo: any; }[];
 
   constructor(private store: Store<fromApp.AppState>,
-    private productService: ProductService
+    private productService: ProductService,
+
+    private router: Router, private route: ActivatedRoute,
+              private locStrat: LocationStrategy,
     ) {
   }
 
@@ -12327,6 +12334,15 @@ export class BrowseComponent implements OnInit, OnDestroy {
       }
     });
 
+    this.paramSubscription = this.route.params.subscribe(
+      (params: Params) => {
+        this.selectedCategory = params.category;
+
+        this.loadProducts(this.selectedCategory);
+        console.log("Category selected:");
+        console.log(this.selectedCategory);
+      }
+    );
 
   }
 

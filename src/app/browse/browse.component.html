@@ -58,9 +58,9 @@
     </div>
     <div class="browse-content col-md-8">
       <div *ngIf="(browseState | async).loading" class="loader"></div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-6">
-          <!-- <p class="product-count">{{(browseState | async).productsCount}} Product Found</p> -->
+          <p class="product-count">{{(browseState | async).productsCount}} Product Found</p>
         </div>
         <div class="col-md-6">
           <div class="sort">
@@ -71,18 +71,8 @@
           </div>
 
 
-          <div *ngFor="let e of (browseState | async).errors">
-            <div *ngIf="e.errorEffect == 'FETCH_PRODUCTS' || e.errorEffect == 'FETCH_PRODUCTS_APPEND'"
-              class="alert-warning col-md-12">
-              <div *ngIf="e.error.status === 400 || e.error.status === 401 ">Problem loading products...</div>
-              <!-- <div *ngIf="e.error.status === 500 || e.error.status === 0 ">Internal server error! Please contact our
-                support
-                team.
-              </div> -->
-            </div>
-          </div>
         </div>
-      </div>
+      </div> -->
       <hr>
       <div class="product row">
         <div class="product-card col-lg-3 col-md-6 col-12" *ngFor="let product of products">
