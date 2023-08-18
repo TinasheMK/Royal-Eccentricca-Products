@@ -85,7 +85,7 @@ export class BrowseEffects {
   fetchCategory = this.actions$
     .pipe(ofType(BrowseActions.FETCH_CATEGORY),
       switchMap((action: BrowseActions.FetchCategory) => {
-        return this.productService.getCategories()
+        return this.productService.getCategory()
           .pipe(map(res => {
             return { type: BrowseActions.FETCH_CATEGORY_SUCCESS, payload: { res, effect: BrowseActions.FETCH_CATEGORY } };
           }), catchError(error => of(new BrowseActions.BrowseError({ error, errorEffect: BrowseActions.FETCH_CATEGORY }))));

@@ -127,7 +127,7 @@ export class BrowseComponent implements OnInit, OnDestroy {
   }
 
   getCategories(){
-    this.productService.getCategories().subscribe(
+    this.productService.getCategory().subscribe(
       data => {
         this.categories = data;
         console.log(data);
@@ -137,7 +137,7 @@ export class BrowseComponent implements OnInit, OnDestroy {
 
   loadProducts(id){
 
-    this.productService.loadCategoryProducts2(id).subscribe(
+    this.productService.loadCategoryProducts(id).subscribe(
       data => {
         this.products = data;
 
