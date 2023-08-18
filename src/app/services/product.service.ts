@@ -9,7 +9,7 @@ export class ProductService {
 
   publicUrl = `${config.apiUrl}`;
   categoryUrl = `${config.apiUrl}/api/public/category`;
-  colorUrl = `${config.apiUrl}/api/public/colors`;
+  // colorUrl = `${config.apiUrl}/api/public/colors`;
 
   browsePageSize = 20;
   searchPageSize = 10;
@@ -63,29 +63,6 @@ export class ProductService {
       });
   }
 
-  getProductsCount(category: string, color: string, minPrice: string, maxPrice: string) {
-    let params = new HttpParams();
-    if (category && category !== 'any') {
-      params = params.set('category', category);
-    }
-
-    if (color && color !== 'any') {
-      params = params.set('color', color);
-    }
-
-    if (minPrice && minPrice !== '0') {
-      params = params.set('minPrice', minPrice);
-    }
-
-    if (maxPrice && maxPrice !== '0') {
-      params = params.set('maxPrice', maxPrice);
-    }
-
-    return this.httpClient.get<number>(`${this.publicUrl}/count`,
-      {
-        params
-      });
-  }
 
   getFullProduct(productUrl: string) {
     return this.httpClient.get<ProductDetail>(`${this.publicUrl}/${productUrl}`);
@@ -103,27 +80,16 @@ export class ProductService {
   }
 
   getNewlyAdded() {
-    var data = {
-      "categoryId": 854,
-      "IncludeClearanceItems": true
-    };
-    return this.httpClient.post(this.publicUrl + '/Catalogue/getCategoryProducts', data, this.options);
+    return this.httpClient.get(this.publicUrl + '/category/products/196');
   }
 
   getMostSelling(): Observable<any> {
-    var data = {
-      "categoryId": 854,
-      "IncludeClearanceItems": true
-    };
-    return this.httpClient.post(this.publicUrl + '/Catalogue/getCategoryProducts', data, this.options);
+    return this.httpClient.get(this.publicUrl + '/category/products/196');
+
   }
 
   loadCategoryProducts(id): Observable<any> {
-    var data = {
-      "categoryId": id,
-      "IncludeClearanceItems": true
-    };
-    return this.httpClient.post(this.publicUrl + '/Catalogue/getCategoryProducts', data, this.options);
+    return this.httpClient.get(this.publicUrl + '/category/products/'+id);
   }
 
 
@@ -144,11 +110,12 @@ export class ProductService {
   }
 
   getCategory() {
-    return this.httpClient.get<Array<Category>>(this.categoryUrl);
+    return this.httpClient.get(this.publicUrl + '/categories');
+
   }
 
   getColors() {
-    return this.httpClient.get<Array<Colors>>(this.colorUrl);
+    return null;
   }
 
 }
