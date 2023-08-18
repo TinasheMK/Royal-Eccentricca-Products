@@ -7,14 +7,14 @@
 
         <ul class="navbar-nav" *ngFor="let c of categories">
 
-          <li *ngIf="c.SubCategories.length == 0" class="nav-item dropdown">
+          <li *ngIf="c.SubCategories?.length == 0" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{c.CategoryName}}
+              {{c.name}}
             </a>
           </li>
           <li *ngIf="c.SubCategories.length != 0" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{c.CategoryName}}
+              {{c.name}}
             </a>
 
             <div class="dropdown-menu tin" style="    transform: initial !important;" aria-labelledby="navbarDropdownMenuLink">
@@ -77,7 +77,7 @@
       <div class="product row">
         <div class="product-card col-lg-3 col-md-6 col-12" *ngFor="let product of products">
           <a routerLink="/detail/{{product.ProductId}}">
-            <img src="{{product.ImageUrl2x}}" alt="product image"
+            <img src="{{product.images[0].url}}" alt="product image"
               [ngClass]="{'gray': (browseState | async).loading}">
             <hr>
             <p class="product-name">{{product.ProductName}}</p>

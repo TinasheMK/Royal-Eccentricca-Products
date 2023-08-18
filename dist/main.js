@@ -2295,7 +2295,7 @@ class BrowseComponent {
                     "CategoryId": 445,
                     "SubCategories": [
                         {
-                            "CategoryId": 946,
+                            "CategoryId": 196,
                             "SubCategories": [],
                             "CategoryName": "Altitude Gifts",
                             "RelativePosition": 1,

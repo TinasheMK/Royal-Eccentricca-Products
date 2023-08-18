@@ -2,8 +2,9 @@ import { Configuration } from './model';
 
 
 export const config: Configuration = {
-  apiUrl: 'https://www.amrod.co.za/v3/api',
-  authUrl: 'https://www.amrod.co.za/v3/api',
+  // apiUrl: 'https://api.royaleccentrica.co.zw',
+  apiUrl: 'http://localhost:8000',
+  authUrl: 'localhost:8000',
   clientId: 'test',
   clientSecret: 'test',
   carausel: [
