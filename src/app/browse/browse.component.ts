@@ -131,7 +131,7 @@ export class BrowseComponent implements OnInit, OnDestroy {
       data => {
         this.categories = data;
         console.log(data);
-      }
+      },err => {console.log(err);}
     );
   }
 

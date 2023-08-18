@@ -1,78 +1,42 @@
 
 <div class="browse container">
   <div class="row">
-    <div class="filters col-md-4">
-      <div class="categories">
+    <div class="filters border p-2 col-md-4" >
+      <div class="" style="height:100vh">
         <p>Categories</p>
 
         <ul class="navbar-nav" *ngFor="let c of categories">
-
-          <li *ngIf="c.SubCategories?.length == 0" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{c.name}}
-            </a>
-          </li>
-          <li *ngIf="c.SubCategories.length != 0" class="nav-item dropdown">
+          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {{c.name}}
             </a>
 
             <div class="dropdown-menu tin" style="    transform: initial !important;" aria-labelledby="navbarDropdownMenuLink">
-              <a *ngFor="let s of c.SubCategories" class="dropdown-item" (click)="loadProducts(s.CategoryId)" >{{s.CategoryName}}</a>
+              <div *ngIf="c.sub_category.length==0" >
+                <a *ngFor="let s of c.sub_category" class="dropdown-item" (click)="loadProducts(s.id)" >{{s.name}}</a>
+              </div>
+              <div *ngIf="c.sub_category.length!=0">
+                <ul  class="dropdown-item" *ngFor="let s of c.sub_category">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{s.name}}
+                    </a>
+
+                    <!-- <div class="dropdown-menu tin" style="    transform: initial !important;" aria-labelledby="navbarDropdownMenuLink">
+                      <a *ngFor="let s of c.sub_category" class="dropdown-item" (click)="loadProducts(s.id)" >{{s.name}}</a>
+                    </div> -->
+                  </li>
+                </ul>
+              </div>
             </div>
           </li>
         </ul>
 
-        <p *ngIf="selectedCategory !== 'any'" class="remove" (click)="clearCategory()">remove</p>
-        <!-- <div class="category {{selectedCategory === c.CategoryName ? 'active': ''}}"
-          *ngFor="let c of categories">
-          {{c.CategoryName}}
-        </div> -->
-
       </div>
-      <!-- <div class="price">
-        <p>Price</p>
-        <p *ngIf="minPrice !== '0' || maxPrice !== '0'" class="remove" (click)="clearPrice()">remove</p>
-        <div class="row">
-          <div class="min col-md-4">
-            <p>Min Price</p>
-            <input type="number" (change)="selectMin($event.target.value)" value="{{minPrice !== '0' ? minPrice : ''}}">
-          </div>
-          <div class="max col-md-4">
-            <p>Max Price</p>
-            <input type="number" (change)="selectMax($event.target.value)" value="{{maxPrice !== '0' ? maxPrice : ''}}">
-          </div>
-          <div class="col-md-2"></div>
-        </div>
-      </div>
-      <div class="color">
-        <p>Color</p>
-        <p *ngIf="selectedColor !== 'any'" class="remove" (click)="clearColor()">remove</p>
-        <div>
-          <div *ngFor="let color of (browseState | async).colors" [ngStyle]="{'background-color': color.color.hex}"
-            (click)="selectColor(color.color.name)" class="{{selectedColor === color.color.name ? 'active' : ''}}">
-          </div>
-        </div>
-
-      </div> -->
     </div>
     <div class="browse-content col-md-8">
       <div *ngIf="(browseState | async).loading" class="loader"></div>
-      <!-- <div class="row">
-        <div class="col-md-6">
-          <p class="product-count">{{(browseState | async).productsCount}} Product Found</p>
-        </div>
-        <div class="col-md-6">
-          <div class="sort">
-            <select name="sortBy" id="sortBy" (change)="selectSort($event.target.value)">
-              <option *ngFor="let s of sortBy" [value]="s.value" [selected]="s.value === selectedSort ? true : false">
-                {{s.display}}</option>
-            </select>
-          </div>
 
-
-        </div>
-      </div> -->
       <hr>
       <div class="product row">
         <div class="product-card col-lg-3 col-md-6 col-12" *ngFor="let product of products">
@@ -92,13 +56,6 @@
             </div>
           </a>
         </div>
-
-        <!-- <div class="product-not-found"
-          *ngIf="(browseState | async).productsCount === 0 && !(browseState | async).loading">
-          <h1>:(</h1>
-          <h3>Sorry, no product found</h3>
-          <p>Try searching again!</p>
-        </div> -->
       </div>
 
 

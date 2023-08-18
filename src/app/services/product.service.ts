@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class ProductService {
 
-  publicUrl = `${config.apiUrl}`;
+  publicUrl = `${config.apiUrl}/api`;
   categoryUrl = `${config.apiUrl}/api/public/category`;
   // colorUrl = `${config.apiUrl}/api/public/colors`;
 
