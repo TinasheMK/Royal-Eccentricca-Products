@@ -785,7 +785,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
           ))
           .subscribe(
             (data) => {
-              this.product1 = data.Body;
+              this.product1 = data;
               // this.variant = params.variant ? params.variant : this.product.productVariantDetails[0].id;
               // this.activeProductVariant = data.productVariantDetails.find(p => p.id === Number(this.variant));
               // if (!this.activeProductVariant) {

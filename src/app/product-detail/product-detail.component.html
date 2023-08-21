@@ -7,11 +7,11 @@
   <div *ngIf="product1 != null && innerLoading == false" class="row pt-5">
     <div class="col-md-7">
       <div class="carausel">
-        <ngb-carousel *ngIf="product1.Images[0].ImageUrl3x">
-          <ng-template ngbSlide *ngFor="let c of product1.Images">
-            <img [src]="c.ImageUrl3x" alt="{{c.ProductName}}" class="w-100">
+        <ngb-carousel *ngIf="product1.images[0].url">
+          <ng-template ngbSlide *ngFor="let c of product1.images">
+            <img [src]="c.url" alt="{{c.name}}" class="w-100">
             <div class="carousel-caption">
-              <p>{{c.ProductName}}</p>
+              <p>{{c.name}}</p>
             </div>
           </ng-template>
         </ngb-carousel>
@@ -32,15 +32,15 @@
     <div class="col-md-4 mr-auto">
 
       <div class="product-description">
-        <span class="category">{{ product1.ProductName }}</span>
-        <h1 class="name">{{ product1.ProductName}}</h1>
+        <span class="category">{{ product1.name }}</span>
+        <h1 class="name">{{ product1.name}}</h1>
 
-        <div [innerHtml]="product1.ProductDescription"></div>
+        <div [innerHtml]="product1.description"></div>
 
 
 
           <div class="price">
-            <span>Product Code: {{ product1.ProductCode }}</span>
+            <span>Product Code: {{ product1.code }}</span>
           </div>
 
         <div class="row">

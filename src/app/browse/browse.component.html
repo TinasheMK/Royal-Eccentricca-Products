@@ -12,12 +12,12 @@
             </a>
             <ul *ngIf="c.sub_category?.length!=0" class="dropdown-menu dropdown-submenu" style="z-index: 9999">
               <li *ngFor="let sub of c.sub_category">
-                <a *ngIf="sub.sub_category?.length==0" class="dropdown-item" href="#">{{sub.name}}</a>
-                <a *ngIf="sub.sub_category?.length!=0" class="dropdown-item" href="#">{{sub.name}}&nbsp;&raquo;</a>
+                <a *ngIf="sub.sub_category?.length==0" class="dropdown-item" (click)="loadProducts(sub.id)">{{sub.name}}</a>
+                <a *ngIf="sub.sub_category?.length!=0" class="dropdown-item" >{{sub.name}}&nbsp;&raquo;</a>
 
                 <ul  *ngIf="sub.sub_category?.length!=0" class="dropdown-menu dropdown-submenu" style="z-index: 9999">
                   <li *ngFor="let sub2 of c.sub_category">
-                    <a class="dropdown-item" href="#">{{sub2.name}}</a>
+                    <a class="dropdown-item" (click)="loadProducts(sub2.id)">{{sub2.name}}</a>
                   </li>
                 </ul>
               </li>
@@ -33,7 +33,7 @@
       <!-- <hr> -->
       <div class="product row">
         <div class="product-card col-lg-3 col-md-6 col-12" *ngFor="let product of products">
-          <a routerLink="/detail/{{product.ProductId}}">
+          <a routerLink="/detail/{{product.id}}">
             <img class="pr-1" src="{{product.images[0].url}}" alt="product image"
               [ngClass]="{'gray': (browseState | async).loading}">
             <hr>

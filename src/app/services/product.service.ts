@@ -14,10 +14,10 @@ export class ProductService {
   browsePageSize = 20;
   searchPageSize = 10;
 
-  headers = new HttpHeaders()
-  .set('Content-Type', 'application/json')
-  .set('Authorization', `Amrod type="integrator", token="bxnLV1Auc1nDZwquCRKHWFhMiBhXunttkmss4Fcjbl8X9dGuCQvoTPczvPRnA/s84Ujzls04siDD2dEL18dorA=="`)
-  .set('X-AMROD-IMPERSONATE', '025692');
+  // headers = new HttpHeaders()
+  // .set('Content-Type', 'application/json')
+  // .set('Authorization', `Amrod type="integrator", token="bxnLV1Auc1nDZwquCRKHWFhMiBhXunttkmss4Fcjbl8X9dGuCQvoTPczvPRnA/s84Ujzls04siDD2dEL18dorA=="`)
+  // .set('X-AMROD-IMPERSONATE', '025692');
 
   // headers = new HttpHeaders({
   //   'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ export class ProductService {
 
   // });
 
-  options = { headers: this.headers };
+  // options = { headers: this.headers };
 
   constructor(private httpClient: HttpClient) {
   }
@@ -67,12 +67,10 @@ export class ProductService {
   getFullProduct(productUrl: string) {
     return this.httpClient.get<ProductDetail>(`${this.publicUrl}/${productUrl}`);
   }
+
   getFullProduct1(id): Observable<any> {
-    var data = {
-      "productId":id,
-      "IncludeClearanceItems": true
-  };
-    return this.httpClient.post(this.publicUrl + '/Catalogue/getProductDetail', data, this.options);
+
+    return this.httpClient.get(`${this.publicUrl}/product/${id}`);
   }
 
   getRelatedProducts(productUrl: string) {
