@@ -3,7 +3,7 @@
   <div class="row">
     <div class="filters border p-2 col-md-4" >
       <div class="" style="height:100vh">
-        <p>Categories</p>
+        <h3>Categories</h3>
 
         <ul class="navbar-nav" *ngFor="let c of categories">
           <li class="nav-item dropdown">
@@ -41,16 +41,14 @@
       <div class="product row">
         <div class="product-card col-lg-3 col-md-6 col-12" *ngFor="let product of products">
           <a routerLink="/detail/{{product.ProductId}}">
-            <img src="{{product.images[0].url}}" alt="product image"
+            <img class="pr-1" src="{{product.images[0].url}}" alt="product image"
               [ngClass]="{'gray': (browseState | async).loading}">
             <hr>
-            <p class="product-name">{{product.ProductName}}</p>
+            <p class="product-name">{{product.name}}</p>
             <div class="row">
-              <div class="col-md-6">
-                <div class="product-color" [ngStyle]="{'background-color':'blue'}"></div>
-              </div>
-              <div class="col-md-6">
-                <p>Product Code: {{product.ProductCode}}</p>
+              <div class="col">
+                <p>
+                  Product Code: {{product.ProductCode}}</p>
                 <!-- <p>${{product.Price}}</p> -->
               </div>
             </div>
