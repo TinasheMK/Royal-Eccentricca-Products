@@ -171,3 +171,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 If you have any questions mail me -  antkaynak1@gmail.com
 
 set NODE_OPTIONS=--openssl-legacy-provider
+ng build --prod
