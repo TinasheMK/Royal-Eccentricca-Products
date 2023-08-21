@@ -1,7 +1,7 @@
 
 <div class="browse container">
   <div class="row">
-    <div class="filters border p-2 col-md-4" >
+    <div class="filters border p-2 col-md-3" >
       <div class="" style="height:100vh">
         <h3>Categories</h3>
 
@@ -10,34 +10,27 @@
             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {{c.name}}
             </a>
+            <ul *ngIf="c.sub_category?.length!=0" class="dropdown-menu dropdown-submenu" style="z-index: 9999">
+              <li *ngFor="let sub of c.sub_category">
+                <a *ngIf="sub.sub_category?.length==0" class="dropdown-item" href="#">{{sub.name}}</a>
+                <a *ngIf="sub.sub_category?.length!=0" class="dropdown-item" href="#">{{sub.name}}&nbsp;&raquo;</a>
 
-            <div class="dropdown-menu tin" style="    transform: initial !important;" aria-labelledby="navbarDropdownMenuLink">
-              <div *ngIf="c.sub_category.length==0" >
-                <a *ngFor="let s of c.sub_category" class="dropdown-item" (click)="loadProducts(s.id)" >{{s.name}}</a>
-              </div>
-              <div *ngIf="c.sub_category.length!=0">
-                <ul  class="dropdown-item" *ngFor="let s of c.sub_category">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      {{s.name}}
-                    </a>
-
-                    <!-- <div class="dropdown-menu tin" style="    transform: initial !important;" aria-labelledby="navbarDropdownMenuLink">
-                      <a *ngFor="let s of c.sub_category" class="dropdown-item" (click)="loadProducts(s.id)" >{{s.name}}</a>
-                    </div> -->
+                <ul  *ngIf="sub.sub_category?.length!=0" class="dropdown-menu dropdown-submenu" style="z-index: 9999">
+                  <li *ngFor="let sub2 of c.sub_category">
+                    <a class="dropdown-item" href="#">{{sub2.name}}</a>
                   </li>
                 </ul>
-              </div>
-            </div>
+              </li>
+            </ul>
           </li>
         </ul>
 
       </div>
     </div>
-    <div class="browse-content col-md-8">
+    <div class="browse-content col-md-9">
       <div *ngIf="(browseState | async).loading" class="loader"></div>
 
-      <hr>
+      <!-- <hr> -->
       <div class="product row">
         <div class="product-card col-lg-3 col-md-6 col-12" *ngFor="let product of products">
           <a routerLink="/detail/{{product.ProductId}}">
