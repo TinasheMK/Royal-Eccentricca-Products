@@ -1,6 +1,6 @@
 .browse {
   position: relative;
-  top: 80px;
+  top: 130px;
   min-height: 90vh;
 
   .filters {
@@ -167,8 +167,8 @@
         text-decoration: none;
       }
       img {
-        width: 180px;
-        height: 180px;
+        width: 100%;
+        height: inherit;
       }
       .product-color {
         position: relative;

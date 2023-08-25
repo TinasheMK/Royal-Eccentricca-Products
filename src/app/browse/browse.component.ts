@@ -45,7 +45,7 @@ export class BrowseComponent implements OnInit, OnDestroy {
   canFetch = false;
   selectedPage = 0;
   selectedSort = 'any';
-  selectedCategory = 'any';
+  selectedCategory = '210';
   selectedColor = 'any';
   minPrice = '0';
   maxPrice = '0';

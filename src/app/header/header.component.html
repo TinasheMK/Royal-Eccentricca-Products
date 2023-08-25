@@ -2,50 +2,57 @@
 
   <nav class="navbar navbar-expand-lg navbar-light">
 
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed"
+    <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed"
       data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
       aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button> -->
+    </button>
+
 
     <div class="row">
 
-      <div class="col-md-3 col-sm-12 d-none d-sm-block text-center" id="">
-          <a class="nav-link p-0" routerLinkActive="active" href="https://royaleccentrica.co.zw/"
+      <div class="col-md-12 pr-4 col-sm-12 d-none d-sm-block text-center" id="">
+          <a class="nav-link p-0" target="_blank" routerLinkActive="active" href="https://royaleccentrica.co.zw/"
             [routerLinkActiveOptions]="{exact: true}">
             <img src="../../../assets/logo.png" alt="login key" class="w-100" style="max-height: 100px;">
           </a>
         </div>
-      <div class="col-md-3 col-sm-3" style="align-self: center;">
-        <div class="" id="">
-          <a   routerLinkActive="active" routerLink="/browse/210"
-            [routerLinkActiveOptions]="{exact: true}">Categories</a>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-3" style="align-self: center;">
-        <div class="" id="">
-          <a   routerLinkActive="active" href="https://royaleccentrica.co.zw/contact/"
-            [routerLinkActiveOptions]="{exact: true}">Contact Us</a>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-3 d-none d-sm-block" style="align-self: center;">
-        <div class="" id="">
-          <a   routerLinkActive="active" href="https://royaleccentrica.co.zw/"
-            [routerLinkActiveOptions]="{exact: true}">More Info</a>
-        </div>
-      </div>
 
     </div>
 
 
-    <!-- <div class="search navbar-nav">
+    <div class="search navbar-nav">
       <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
-        <div class="form-inline search">
+        <div class="form-inline pl-4 search">
           <input #search class="form-control" type="search" placeholder="Search" (keyup.enter)="searchProduct(search)"
             aria-label="Search">
         </div>
       </div>
-    </div> -->
+    </div>
+
+    <div class="end navbar-nav" >
+      <div class="row w-100" style="max-width: 400px !important;">
+        <div class="col-md-4 col-sm-3" style="align-self: center;">
+          <div class="" id="">
+            <a   routerLinkActive="active" routerLink="/browse/210"
+              [routerLinkActiveOptions]="{exact: true}">Categories</a>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-3" style="align-self: center;">
+          <div class="" id="">
+            <a   routerLinkActive="active" target="_blank" href="https://royaleccentrica.co.zw/contact/"
+              [routerLinkActiveOptions]="{exact: true}">Contact Us</a>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-3 d-none d-sm-block" style="align-self: center;">
+          <div class="" id="">
+            <a   routerLinkActive="active" target="_blank" href="https://royaleccentrica.co.zw/"
+              [routerLinkActiveOptions]="{exact: true}">More Info</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
 <!--
     <div class="end navbar-nav">
 

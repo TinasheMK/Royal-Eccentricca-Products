@@ -98,13 +98,10 @@ export class ProductService {
   }
 
   searchProduct(page: number, keyword: string) {
-    let params = new HttpParams();
-    params = params.append('page', page.toString());
-    params = params.append('keyword', keyword);
-    params = params.set('size', this.searchPageSize.toString());
-    return this.httpClient.get<Array<Product>>(this.publicUrl + '/search', {
-      params
-    });
+    let data = {
+      "query":keyword
+    };
+    return this.httpClient.post<any>(this.publicUrl + `/product/search?page=${page}`, data );
   }
 
   getCategory() {

@@ -1,30 +1,43 @@
 <div class="search container">
   <div class="title">
     <h3>Search Results</h3>
-    <p><span class="highlight">{{products.length}}</span> result<span *ngIf="products.length > 1">s</span> found for the
+    <p><span class="highlight">{{products.total}}</span> result<span *ngIf="products.length > 1">s</span> found for the
       search for
       <span class="highlight">{{keyword}}</span>
     </p>
   </div>
 
-  <div class="col-12 col-sm-6 col-md-12">
-    <div *ngFor="let product of products" class="search-result row">
-      <div class="search-card col-md-3">
-        <a routerLink="/detail/{{product.url}}/0">
-          <img src="{{product.productVariants[0].thumb}}" alt="{{product.name}}">
+  <div class="col-12 col-sm-12 col-md-12 row">
+    <div *ngFor="let product of products.data" class="search-result  col-md-3 ">
+      <div class="search-card">
+        <a routerLink="/detail/{{product.id}}/0">
+          <img src="{{product.images[0].url}}" alt="{{product.name}}">
           <hr>
-          <p class="product-name">{{product.name}}</p>
+          <p class="product-name" style="    white-space: pre-wrap;">{{product.name}}</p>
           <div class="row">
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
               <div class="product-color" [ngStyle]="{'background-color': product.productVariants[0].color.hex}"></div>
-            </div>
+            </div> -->
             <div class="col-md-6">
-              <p>${{product.productVariants[0].price}}</p>
+              <p>Code: {{product.code}}</p>
             </div>
           </div>
         </a>
       </div>
     </div>
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-12 row text-center m-auto">
+    <nav aria-label="Page navigation example" class="m-auto">
+      <ul class="pagination">
+        <li class="page-item" *ngIf="products.current_page!=1" ><a class="page-link"  (click)="searchProducts(products.current_page-1); scrollToTop()" >Previous</a></li>
+        <li class="page-item" *ngIf="(products.current_page+1)<products.last_page" ><a class="page-link"  (click)="searchProducts(products.current_page+1); scrollToTop()" >{{products.current_page+1}}</a></li>
+        <li class="page-item" *ngIf="(products.current_page+2)<products.last_page" ><a class="page-link"  (click)="searchProducts(products.current_page+2); scrollToTop()" >{{products.current_page+2}}</a></li>
+        <li class="page-item" *ngIf="(products.current_page+3)<products.last_page" ><a class="page-link"  (click)="searchProducts(products.current_page+3); scrollToTop()" >{{products.current_page+3}}</a></li>
+        <li class="page-item" *ngIf="(products.current_page+4)<products.last_page" ><a class="page-link"  (click)="searchProducts(products.current_page+4); scrollToTop()" >{{products.current_page+4}}</a></li>
+        <li class="page-item" *ngIf="products.current_page!=products.last_page"><a class="page-link"   (click)="searchProducts(products.current_page+1); scrollToTop()" >Next</a></li>
+      </ul>
+    </nav>
   </div>
 
   <hr *ngIf="!canFetch">

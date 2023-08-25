@@ -17,17 +17,23 @@ export class SearchComponent implements OnInit {
   keyword: string;
   canFetch = false;
 
-  products: Array<Product> = [];
+  products: any;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+
+    this.searchProducts(1);
+  }
+
+
+
+  searchProducts(page){
     this.querySubscribe = this.route.params.subscribe((params: Params) => {
       this.canFetch = false;
       this.keyword = params.keyword;
-      this.page = 0;
-      this.productService.searchProduct(this.page, this.keyword)
+      this.productService.searchProduct(page, this.keyword)
         .pipe(take(1), catchError(
           error => {
             this.canFetch = false;
@@ -36,6 +42,7 @@ export class SearchComponent implements OnInit {
         ))
         .subscribe(data => {
           this.products = data;
+          console.log(this.products);
           this.page++;
           this.canFetch = true;
           if (data.length !== 0) {
@@ -45,27 +52,20 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  @HostListener('window:scroll', ['$event'])
-  onScroll($event: Event): void {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight && this.canFetch) {
-      this.canFetch = false;
-      if (this.canFetch) {
-        this.productService.searchProduct(this.page, this.keyword)
-          .pipe(take(1), catchError(
-            error => {
-              this.canFetch = false;
-              return throwError(error);
-            }
-          ))
-          .subscribe(data => {
-            this.products.push(...data);
-            this.page++;
-            this.canFetch = true;
-            if (data.length === 0) {
-              this.canFetch = false;
-            }
-          });
-      }
-    }
-  }
+
+  scrollToTop() {
+    let val = 50;
+    (function smoothscroll() {
+        var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        if (val > 0) {
+            window.requestAnimationFrame(smoothscroll);
+            window.scrollTo(0, currentScroll - (currentScroll / 8));
+            val--;
+        }
+
+    })();
+
+
+
+}
 }
