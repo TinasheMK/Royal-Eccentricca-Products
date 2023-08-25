@@ -49,6 +49,7 @@ export class BrowseComponent implements OnInit, OnDestroy {
   selectedColor = 'any';
   minPrice = '0';
   maxPrice = '0';
+  catShow = true;
   categories: any;
   products: { ProductId: number; ProductCode: string; ProductName: string; Behavior: number; Promotion: number; PromotionStyle: string; BrandingRibbonStyle: any; BrandingRibbonImage: string; Price: number; PriceWithCurrency: number; Sizes: { SizeCode: string; Price: number; PriceWithCurrency: number; InStock: number; }[]; ImageUrl: string; ImageUrl2x: string; ImageUrl3x: string; ImageUrlXL: string; IsEssential: boolean; IsWorkwear: boolean; WorkwearInfo: any; }[];
 
@@ -106,20 +107,24 @@ export class BrowseComponent implements OnInit, OnDestroy {
 
   }
 
+  toggleCat(){
+    this.catShow = !this.catShow;
+  }
+
   ngOnDestroy(): void {
     if (this.canFetchSubscription) {
       this.canFetchSubscription.unsubscribe();
     }
   }
 
-  @HostListener('window:scroll', ['$event'])
-  onScroll($event: Event): void {
-    if ((window.innerHeight + window.scrollY + 400) >= document.body.offsetHeight) {
-      if (this.canFetch) {
-        this.getProductsAppend();
-      }
-    }
-  }
+  // @HostListener('window:scroll', ['$event'])
+  // onScroll($event: Event): void {
+  //   if ((window.innerHeight + window.scrollY + 400) >= document.body.offsetHeight) {
+  //     if (this.canFetch) {
+  //       this.getProductsAppend();
+  //     }
+  //   }
+  // }
 
   selectMin(minPrice: string) {
     this.minPrice = minPrice.trim().length === 0 ? '0' : minPrice.trim();

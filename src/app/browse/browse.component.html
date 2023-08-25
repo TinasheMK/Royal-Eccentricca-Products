@@ -2,14 +2,15 @@
 <div class="browse container">
   <div class="row">
     <div class="filters border p-2 col-md-3" >
-      <div class="" style="height:100vh">
-        <h4  style="background-color: black;
+      <div class="" style="height:100%"  >
+        <h4  (click)="toggleCat()" style="background-color: black;
         color: #cea545;
         border-radius: 5px;
         padding: 5px;">
         Categories
       </h4>
 
+      <div *ngIf="catShow">
         <ul class="navbar-nav" *ngFor="let c of categories">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -29,6 +30,8 @@
             </ul>
           </li>
         </ul>
+      </div>
+
 
       </div>
     </div>
@@ -55,11 +58,11 @@
       </div>
 
 
-      <div *ngIf="!canFetch" class="row">
+      <!-- <div *ngIf="!canFetch" class="row">
         <div class="col-md-12 col-12">
           <hr>
         </div>
-      </div>
+      </div> -->
     </div>
 
   </div>
