@@ -54,11 +54,11 @@ body,
 
 .carousel-control-next {
   right: 0;
-  background-color: #a3a1a1;
+  background-color: #c7c7c700;
 }
 .carousel-control-prev {
   right: 0;
-  background-color: #a3a1a1;
+  background-color: #2c2c2c00;
 }
 
 a {
@@ -87,4 +87,18 @@ a {
     box-shadow: 0 -2em;
     height: 5em;
   }
+}
+
+
+.carousel-control-next-icon {
+  mix-blend-mode: initial;
+  color: black;
+  background-color: black !important;
+}
+
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+  mix-blend-mode: initial;
+  color: black;
+  background-color: black !important;
 }

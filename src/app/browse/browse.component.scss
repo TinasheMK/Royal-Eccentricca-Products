@@ -1,6 +1,6 @@
 .browse {
   position: relative;
-  top: 150px;
+  top: 80px;
   min-height: 90vh;
 
   .filters {
@@ -215,6 +215,7 @@ p {
 
 .dropdown-menu li {
   position: relative;
+  white-space: pre-wrap;
   }
   .dropdown-menu .dropdown-submenu {
   display: none;
@@ -230,3 +231,7 @@ p {
   display: block;
   }
 
+  .navbar-nav .nav-link {
+    cursor: pointer;
+    white-space: pre-wrap;
+}
