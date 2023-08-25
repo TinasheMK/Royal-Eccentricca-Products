@@ -2,7 +2,7 @@ import { Configuration } from './model';
 
 
 export const config: Configuration = {
-  apiUrl: 'http://api.royaleccentrica.co.zw',
+  apiUrl: 'https://api.royaleccentrica.co.zw',
   // apiUrl: 'http://localhost:8000',
   authUrl: 'localhost:8000',
   clientId: 'test',
